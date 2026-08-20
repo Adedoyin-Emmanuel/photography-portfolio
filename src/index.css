@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  /* Editorial light palette with vermillion accent.
+     Deviation from generated dark defaults to honor the design system
+     anti-pattern "no dark mode by default" and the user's request for
+     a confident magazine-like, high-contrast aesthetic. */
+  --color-background: oklch(0.985 0 0);          /* near-white paper */
+  --color-foreground: oklch(0.145 0 0);          /* near-black ink */
+  --color-primary: oklch(0.145 0 0);             /* ink */
+  --color-on-primary: oklch(0.985 0 0);
+  --color-secondary: oklch(0.27 0 0);
+  --color-accent: oklch(0.62 0.22 28);           /* vermillion */
+  --color-on-accent: oklch(0.985 0 0);
+  --color-muted: oklch(0.94 0 0);                /* soft paper */
+  --color-muted-foreground: oklch(0.45 0 0);
+  --color-border: oklch(0.145 0 0);              /* hard black rules */
+  --color-border-soft: oklch(0.88 0 0);
+  --color-destructive: oklch(0.6368 0.2078 25.33);
+  --color-ring: oklch(0.145 0 0);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
